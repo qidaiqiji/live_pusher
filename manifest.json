@@ -7,6 +7,8 @@
     "transformPx" : false,
     "app-plus" : {
         /* 5+App特有相关 */
+		"usingComponents" : true,
+		"nvueCompiler":"uni-app",
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -17,6 +19,7 @@
             "LivePusher" : {},
             "Share" : {}
         },
+		// "usingComponents" : true,
         /* 模块配置 */
         "distribute" : {
             /* 应用发布信息 */
@@ -61,5 +64,8 @@
         "setting" : {
             "urlCheck" : true
         }
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
     }
 }

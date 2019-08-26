@@ -1,0 +1,135 @@
+<template>
+	<div class="continer">
+		<!-- <view class="cameraWrap">
+			
+		</view> -->
+		<view class="wrapBox">
+			<!-- <view class="cameraArea" @tap="switchCamera">
+				<image src="../../static/images/camera.png" class="camera"></image>
+			</view> -->
+			<text class="viewer">{{viewerCount}}人观看</text>
+			<!-- <view class="countDown">
+				<view class="redDot"></view>
+				<text class="time">{{hour}}:{{minutes}}:{{seconds}}</text>
+			</view> -->
+		</view>
+	</div>
+</template>
+
+<script>
+	const globalEvent = weex.requireModule('globalEvent');
+	export default {
+		data() {
+			return {
+				viewerCount:0,
+				
+			}
+		},
+		created(){
+			globalEvent.addEventListener("plusMessage", e => {
+			
+			  this.viewerCount = e.data.viewerCount
+			});
+		},
+		beforeUpdate(){
+			// console.log("更新1111")
+			// this.viewerCount = this.viewerCount;
+			// globalEvent.addEventListener("plusMessage", e => {
+			// 	console.log("plusMessage",e)
+			// 	this.startCount = e.data.startCount;
+			// });
+			// if(this.startCount) {
+			// 	console.log("this.startCount",this.startCount)
+			// 	let that = this;
+			// 	clearInterval(this.timer)
+			// 	this.timer = setInterval(function(){
+			// 		console.log("111")
+			// 		// that.count ++;
+			// 		that.seconds++;
+			// 		that.seconds = that.seconds<10?"0"+that.seconds:that.seconds;
+			// 		if(that.seconds>=60){
+			// 			that.minutes ++ ;
+			// 			that.minutes = that.minutes<10?"0"+that.minutes:that.minutes;
+			// 			that.seconds = 0;
+			// 		}
+			// 		if(that.minutes>=60){
+			// 			that.hour++;
+			// 			that.hour = that.hour<10?"0"+that.hour:that.hour;
+			// 			that.minutes = 0
+			// 		}
+			// 		console.log("dsads",that.hour,that.minutes,that.seconds )
+			// 		
+			// 	},1000)
+			// }else{
+			// 	clearInterval(this.timer)
+			// }
+		},
+		methods: {
+			switchCamera(){
+				console.log("bbb")
+				console.log("uni.getCurrentSubNVue()",uni.getCurrentSubNVue())
+				uni.postMessage({num:"1"})
+			}
+		}
+	}
+</script>
+
+<style>
+	.continer{
+		width: 750upx;
+		height: 300upx;
+		margin-top: 160rpx;
+	}
+	.wrapBox{
+		width: 750upx;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.viewer{
+		width: 180upx;
+		height: 60upx;
+		padding: 0 20rpx;
+		border-radius: 30rpx;
+		background-color:rgba(0,0,0,.5) ;
+		text-align: center;
+		color: #fff;
+		font-size: 24rpx;
+		line-height: 60rpx;
+	}
+	.cameraArea{
+		width: 80upx;
+		height: 80upx;
+		justify-content: center;
+		align-items: center;
+	}
+	.camera{
+		width: 38upx;
+		height: 38upx;
+	}
+	.countDown{
+		/* width:168upx; */
+		height:38upx;
+		background-color:rgba(0,0,0,1);
+		opacity:0.5;
+		border-radius:19upx;
+		/* background-color: #4CD964; */
+		text-align: center;
+		padding: 0 20upx;
+		/* display: flex; */
+		flex-direction: row;
+		align-items: center;
+	}
+	.time{
+		color: #fff;
+		font-size: 24upx;
+		line-height: 38upx;
+	}
+	.redDot{
+		width: 24upx;
+		height: 24upx;
+		background-color: red;
+		border-radius: 50%;
+		margin-right: 10upx;
+	}
+</style>

@@ -6,10 +6,10 @@
 					<view class="livingBroadcastItem"  @tap="jumpToDetail(item)">
 						<image :src="item.cover"></image>
 						<view class="opration_msg">
-							<view class="msg_title"></view>
+							<view class="msg_title">{{item.title}}</view>
 							<view class="msg_num">
 								<view><image src="../../static/images/home/icon_zanting.png"></image></view>
-								<view>188人观看</view>
+								<view>{{item.viewerCount}}人观看</view>
 							</view>
 						</view>
 					</view>
@@ -67,6 +67,7 @@ export default {
 			});
 			this.liveList = res.data.liveList;
 			this.eveList = res.data.eveList;
+			
 			uni.stopPullDownRefresh();
 		}catch(err){
 			uni.stopPullDownRefresh();

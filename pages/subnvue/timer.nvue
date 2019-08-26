@@ -1,0 +1,91 @@
+<template>
+	<view class="continer">
+		<view class="countDown">
+			<view class="redDot"></view>
+			<text class="time">{{hour}}:{{minutes}}:{{seconds}}</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	const globalEvent = weex.requireModule('globalEvent');
+	export default {
+		data() {
+			return {
+				hour:"00",
+				minutes:"00",
+				seconds:"00",
+				count:0,
+				timer:null,
+				satrtCount:false
+			}
+		},
+		created(){
+			console.log("创建")
+			// this.count()
+			globalEvent.addEventListener("plusMessage", e => {
+				console.log("fggg",e.data.startCount)
+			  this.startCount = e.data.startCount;
+			 if(e.data.startCount) {
+				 let that = this;
+				 clearInterval(this.timer)
+				 this.timer = setInterval(function(){
+				 	that.seconds++;
+				 	that.seconds = that.seconds<10?"0"+that.seconds:that.seconds;
+				 	if(that.seconds>=60){
+				 		that.minutes ++ ;
+				 		that.minutes = that.minutes<10?"0"+that.minutes:that.minutes;
+				 		that.seconds = 0;
+				 	}
+				 	if(that.minutes>=60){
+				 		that.hour++;
+				 		that.hour = that.hour<10?"0"+that.hour:that.hour;
+				 		that.minutes = 0
+				 	}
+				 	console.log("dsads",that.hour,that.minutes,that.seconds )
+				 },1000)
+			 }else{
+				 clearInterval(this.timer);
+				 this.hour = "00";
+				 this.minutes = "00";
+				 this.seconds = "00";
+			 }
+			});
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style>
+	.continer{
+		width: 300upx;
+		height: 300upx;
+		margin-top: 180rpx;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+.countDown{
+		height:38upx;
+		background-color:rgba(0,0,0,1);
+		opacity:0.5;
+		border-radius:19upx;
+		text-align: center;
+		padding: 0 20upx;
+		flex-direction: row;
+		align-items: center;
+	}
+	.time{
+		color: #fff;
+		font-size: 24upx;
+		line-height: 38upx;
+	}
+	.redDot{
+		width: 24upx;
+		height: 24upx;
+		background-color: red;
+		border-radius: 50%;
+		margin-right: 10upx;
+	}
+</style>

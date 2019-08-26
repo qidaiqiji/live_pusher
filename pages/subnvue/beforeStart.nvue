@@ -1,0 +1,97 @@
+<template>
+	<view>
+		<view class=""></view>
+	</view>
+    <!-- <view class="s-page-wrapper jiu-page">
+		<view style="color: red;">dsfvdsdgvdf</view>
+        <view class="uni-common-mt">
+            <view class="uni-list">
+                <view class="uni-list-cell">
+                    <view class="uni-list-cell-left"><view class="uni-label">设置标题</view></view>
+                    <view class="uni-list-cell-db"><input class="uni-input" type="text" placeholder="请输入你要设置的标题" name="title" v-model="title" /></view>
+                </view>
+            </view>
+            <view class="uni-padding-wrap">
+                <view class="uni-btn-v">
+                    <button type="primary" class="btn-setstorage" @tap="setNav" v-if="navigateBack">显示返回按钮</button>
+                    <button type="primary" class="btn-setstorage" @tap="setNav" v-if="!navigateBack">隐藏返回按钮</button>
+                    <button type="primary" class="btn-setstorage" @tap="save">立即设置</button>
+					<view>上的时间和方式等级划分</view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+	<view class="container">
+		<view class="floatArea">
+			<view class="goods" @tap="addGoods">商品</view>
+			<view class="startBtn" @tap="plusReady">
+				<view class="redDot"></view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+export default {
+    data() {
+        // return {
+        //     title: '',
+        //     navigateBack: false
+        // };
+    },
+    onLoad: function() {},
+    // onReady() {
+    //     // post 消息到原生窗口
+    //     uni.getSubNVueById('beforeStart').postMessage({
+    //         // title: '我的收藏',
+    //         // navigateBack: true
+    //     });
+    // },
+    methods: {
+        // save() {
+        //     uni.getSubNVueById('beforeStart').postMessage({
+        //         title: this.title
+        //     });
+        // },
+        // setNav() {
+        //     var navigateBack = this.navigateBack;
+        //     uni.getSubNVueById('beforeStart').postMessage({
+        //         navigateBack: navigateBack
+        //     });
+        //     this.navigateBack = !this.navigateBack; 
+        // }
+    }
+};
+</script>
+
+<style lang="less">
+	.container{
+		width: 750rpx;
+		height: 100vh ;
+		background-color: red;
+		// position: relative;
+	}
+	.floatArea{
+		width:750rpx;
+		height: 150rpx;
+		background-color: blue;
+		// position: absolute;
+		// left: 0;
+		// bottom: 0;
+	}
+	.startBtn{
+		width: 140rpx;
+		height: 140rpx;
+		background-color: #000;
+		// display: flex;
+		// justify-content: center;
+		// align-items: center;
+		border-radius: 50%;
+	}
+	.redDot{
+		width: 50rpx;
+		height: 50rpx;
+		border-radius: 50%;
+		background-color: red;
+	}
+</style>

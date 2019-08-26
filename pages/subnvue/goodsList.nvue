@@ -1,0 +1,148 @@
+<template>
+	<view class="goodsContainer">
+		<view class="goodsWrap">
+			<view class="titleWrap">
+				<view class="title">直播商品</view>
+			</view>
+			<view class="goodsBox">
+				<block v-for="(item,index) in goodsList" :key="item.goodsId">
+					<view class="goodsItemWrap">
+						<view class="thumbWrap">
+							<view class="count">
+								<text class="countNum">{{index+1}}</text>
+							</view>
+							<image src="item.thumb" class="thumb"></image>
+						</view>
+						<view class="goodsDetail">
+							<view class="goodsNameWrap">
+								<text class="goodsName">{{item.goodsName}}</text>
+							</view>
+							<view class="goodsPriceWrap">
+								<text class="goodsPrice">￥{{item.goodsPrice}}</text>
+							</view>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	const globalEvent = weex.requireModule('globalEvent');
+	export default {
+		
+		data() {
+			return {
+				goodsList:[]
+			}
+		},
+		created(){
+			globalEvent.addEventListener("plusMessage", e => {
+			  this.goodsList = e.data.goodsList;
+			});
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style lang="less">
+	.goodsContainer{
+		width: 750upx;
+	}
+	.titleWrap{
+		width: 750upx;
+		height: 120upx;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		background-color: #fff;
+		
+	}
+	.title{
+		font-size: 32upx;
+		line-height: 42upx;
+	}
+	.goodsBox{
+		width: 750upx;
+		padding: 0 24upx;
+		margin-top: 148upx;
+	}
+	.goodsItemWrap{
+		width:702upx;
+		height:216upx;
+		background-color:rgba(243,243,243,1);
+		border-radius:16upx;
+		margin: 20upx 0;
+		flex-direction: row;
+		padding: 18upx;
+	}
+	.thumbWrap{
+		width: 180upx;
+		height: 180upx;
+		border-radius:16px;
+		background-color: #fff;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		margin-right: 30upx;
+	}
+	.count{
+		position: absolute;
+		top: 8upx;
+		left: 8upx;
+		width:44upx;
+		height:24upx;
+		line-height: 24upx;
+		background-color:rgba(255,102,153,1);
+		border-top-left-radius:16upx;
+		border-top-right-radius:0;
+		border-bottom-left-radius:0;
+		border-bottom-right-radius:16upx;
+		justify-content: center;
+		align-items: center;
+	}
+	.countNum{
+		font-size: 14upx;
+		color: #fff;
+	}
+	.thumb{
+		width: 180upx;
+		height: 180upx;
+	}
+	.goodsDetail{
+		flex: 1;
+		// flex-direction: row;
+		justify-content: space-between;
+		position: relative;
+	}
+	// .goodsNameWrap{
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// }
+	// .goodsPriceWrap{
+	// 	position: absolute;
+	// 	bottom: 0;
+	// 	left: 0;
+	// }
+	.goodsName{
+		font-size:28upx;
+		font-family:PingFangSC;
+		font-weight:400;
+		color:rgba(47,58,64,1);
+		line-height:32upx;
+	}
+	.goodsPrice{
+		height:30upx;
+		font-size:28upx;
+		font-family:PingFangSC;
+		font-weight:400;
+		color:rgba(255,102,153,1);
+		line-height:28upx;
+	}
+</style>

@@ -9,7 +9,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "小美直播间",
+				"navigationBarTitleText": "小美诚品直播间",
 				// "app-plus": {
 				// 	"pullToRefresh": {
 				// 		"support": true,
@@ -22,10 +22,52 @@
 		{
 			"path": "pages/pusher/index",
 			"style": {
-				"navigationBarTitleText": "小美直播"
+				"navigationBarTitleText": "小美直播",
+				"app-plus":{
+					"subNVues":[
+						{
+							"id": "goodsList",
+							"type":"popup",
+							"path":"pages/subnvue/goodsList",
+							"style":{
+								"position": "absolute",  
+								"bottom":0,
+								"width": "100%",  
+								"height": "1000upx",  
+								"background": "#fff"
+							}
+						},
+						{
+						    "id": "timer",
+						    "path": "pages/subnvue/timer",
+						    // "type": "popup",
+							"style":{
+								"position": "absolute",  
+								"right":0,
+								"top":0,
+								"width": "50%",  
+								"height": "300upx",  
+								"background": "transparent"
+							}
+						},
+						{
+							"id": "viewerCount",
+							// "type":"popup",
+							"path":"pages/subnvue/viewerCount",
+							"style":{
+								"position": "absolute",
+								"top":0,
+								"width": "50%",  
+								"height": "300upx",  
+								"background": "transparent"
+							}
+						}
+						
+					]
+				}
 			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

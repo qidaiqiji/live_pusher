@@ -4,7 +4,7 @@
 import Base64 from './base64.js';
 let USE_DEBUG = typeof window == 'undefined' ? true : false;
 // 请求设置
-let Env=true;
+let Env=false;
 let _Post = 'http://xm.rdmate.com/company/xiaopost';
 let _Get = 'http://xm.rdmate.com/company/xiaoget';
 let _xiaomei360 =  Env?'https://api.xiaomei360.com':'https://testapi.xiaomei360.com';
@@ -28,7 +28,12 @@ export let getLoginSms = `${xiaomei360}/v2/user/get-sms-check-no`;
 export let user_apploginwithcode = `${xiaomei360}/v2/user/app-login-with-code`;
 // ---- APP注册登录
 export let user_appregister = `${xiaomei360}/v2/user/app-register`;
-
+// 获取直播商品列表
+export let getLiveList = `${xiaomei360}/v2/aliyun-live/goods-list`;
+// 获取直播观看人数
+export let getViewerCounter = `${xiaomei360}/v2/aliyun-live/info`;
+// 禁播
+export let forbideLive = `${xiaomei360}/v2/aliyun-live/forbid`;
 // 信息提示框
 export function showMessage(message) {
     uni.showToast({
@@ -274,7 +279,9 @@ export function	split_price(List = [], price = '', attribute = '') {
  * @param {Object} vm 实例模型
  */
 export function getAccessToken(vm) {
+	
     let accessToken = uni.getStorageSync('access_token');
+	console.log("gfg",accessToken)
     if (accessToken) {
         vm.$store.commit('updateToken', accessToken);
     } else {

@@ -28,7 +28,7 @@
 			 </view>
 			<view class='right_goods'>
 			  <block v-for='(goods,index) in liveItem.goodsList' :key='index'>
-				<view>
+				<view v-if="index<3">
 				  <image :src='goods.thumb'></image>
 				</view>
 			  </block>

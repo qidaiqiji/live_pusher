@@ -55,6 +55,7 @@ export default {
         this.openId = openId || '';
         this.unionid = unionid || '';
         this.code = code || '';
+		
     },
     computed: {
         isCode: function() {
@@ -81,6 +82,9 @@ export default {
         if (this.countdown < 60) {
             this.settime();
         }
+		if(this.access_token) {
+			this.$api.goNavigateTo('/pages/index/index');
+		}
     },
     methods: {
         getMobileType() {
